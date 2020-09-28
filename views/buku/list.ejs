@@ -1,0 +1,30 @@
+<center><h3>Daftar Buku</h3></center>
+<h3><a class="btn btn-secondary" href="/buku/formtambah"> Tambah Buku</a></h3> 
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Judul</th>
+            <th>Penerbit</th>
+            <th>Pengarang</th>
+            <th>Tahun</th>
+            <th>Halaman</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr>
+            <td>{{this.Judul}}</td>
+            <td>{{this.Penerbit}}</td>
+            <td>{{this.Pengarang}}</td>
+            <td>{{this.Tahun}}</td>
+            <td>{{this.Halaman}}</td>
+            <td>
+                <a href="/buku/edit/{{this._id}}" class="btn btn-warning" ><i aria-hidden="true"></i>Edit</a>
+                <a href="/buku/delete/{{this._id}}" class="btn btn-danger"  onclick="return confirm('Menghapus data buku {{this.Judul}}?');"><i aria-hidden="true"></i>Hapus</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

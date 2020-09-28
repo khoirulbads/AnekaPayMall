@@ -1,0 +1,35 @@
+<h3>{{viewTitle}}</h3>
+
+<form action="/buku/actiontambah" method="POST" autocomplete="off">
+  
+    <div class="form-group">
+        <label>Judul</label>
+        <input type="text" class="form-control" name="Judul" placeholder="Judul Buku" value="" >
+        <div class="text-danger">
+            </div>
+    </div>
+    <div class="form-group">
+        <label>Penerbit</label>
+        <input type="text" class="form-control" name="Penerbit" placeholder="Penerbit" value="" >
+        <div class="text-danger">
+           </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Pengarang</label>
+            <input type="text" class="form-control" name="Pengarang" placeholder="Pengarang" value="">
+        </div>
+        <div class="form-group col-md-3">
+            <label>Tahun</label>
+            <input type="number" class="form-control" name="Tahun" placeholder="Tahun Terbit"  value="">
+        </div>
+        <div class="form-group col-md-3">
+            <label>Halaman</label>
+            <input type="number" class="form-control" name="Halaman" placeholder="Tebal Halaman"  value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-info"> Simpan</button>
+        <a class="btn btn-secondary" href="/buku">Lihat Data</a>
+    </div>
+</form>

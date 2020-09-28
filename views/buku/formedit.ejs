@@ -1,0 +1,35 @@
+<h3>{{viewTitle}}</h3>
+
+<form action="/buku/actionedit/{{buku._id}}" method="POST" autocomplete="off">
+    <input name="_id" value="{{buku._id}}">
+    <div class="form-group">
+        <label>Judul</label>
+        <input type="text" class="form-control" name="Judul" placeholder="Judul Buku" value="{{buku.Judul}}" required="TRUE">
+        <div class="text-danger">
+            </div>
+    </div>
+    <div class="form-group">
+        <label>Penerbit</label>
+        <input type="text" class="form-control" name="Penerbit" placeholder="Penerbit" value="{{buku.Penerbit}}" required="TRUE">
+        <div class="text-danger">
+           </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Pengarang</label>
+            <input type="text" class="form-control" name="Pengarang" placeholder="Pengarang" required="TRUE" value="{{buku.Pengarang}}">
+        </div>
+        <div class="form-group col-md-3">
+            <label>Tahun</label>
+            <input type="number" class="form-control" name="Tahun" placeholder="Tahun Terbit" required="TRUE" value="{{buku.Tahun}}">
+        </div>
+        <div class="form-group col-md-3">
+            <label>Halaman</label>
+            <input type="number" class="form-control" name="Halaman" placeholder="Tebal Halaman" required="TRUE" value="{{buku.Halaman}}">
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-info"> Simpan</button>
+        <a class="btn btn-secondary" href="/buku">Batal</a>
+    </div>
+</form>
