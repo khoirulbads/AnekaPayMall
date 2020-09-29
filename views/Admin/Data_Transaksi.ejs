@@ -17,21 +17,21 @@ Coded by www.creative-tim.com
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="http://localhost:3000/Asset/Admin/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="http://localhost:3000/Asset/Admin/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../Asset/Admin/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../Asset/Admin/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Admin - Data Transaksi
+    Admin - Transaksi
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <!-- CSS Files -->
-  <link href="http://localhost:3000/Asset/Admin/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="http://localhost:3000/Asset/Admin/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+  <link href="../Asset/Admin/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../Asset/Admin/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="http://localhost:3000/Asset/Admin/demo/demo.css" rel="stylesheet" />
+  <link href="../Asset/Admin/demo/demo.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -41,54 +41,43 @@ Coded by www.creative-tim.com
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Buku</h4>
+              <h4 class="modal-title">Tambah Kurir</h4>
             </div>
             <div class="modal-body">
-              <form role="form" action="/admin_tambahbuku" method="post" >
+              <form role="form" action="/admin/addKurir" method="post" >
              
                 <div class="card-body">
                    <div class="row">
                     <div class="col-md-12 pr-1">
                       <div class="form-group">
-                        <label>Judul</label>
-                        <input type="text" class="form-control"  placeholder="Judul Buku" name="Judul" required="true">
+                        <label>Nama</label>
+                        <input type="text" class="form-control"  placeholder="Nama" name="Nama" required="true">
                       </div>
                     </div>
                     <div class="col-md-12 pr-1">
                       <div class="form-group">
-                        <label>Pengarang</label>
-                        <input type="text" class="form-control"  placeholder="Pengarang" name="Pengarang" required="true">
+                        <label>No HP</label>
+                        <input type="number" class="form-control"  placeholder="No HP" name="Nohp" required="true">
                       </div>
                     </div>
+                  
                     <div class="col-md-8 pr-1">
                       <div class="form-group">
-                        <label>Penerbit</label>
-                        <input type="text" class="form-control"  placeholder="Penerbit" name="Penerbit" required="true">
+                        <label>Alamat</label>
+                        <input type="text" class="form-control"  placeholder="Alamat" name="Alamat" required="true">
                       </div>
                     </div>
                     
                     <div class="col-md-4 px-1">
                       <div class="form-group">
-                        <label>Tahun Terbit</label>
-                        <input type="number" class="form-control" placeholder="Tahun Terbit" name="Tahun" required="true">
+                        <label>Area</label>
+                        <input type="text" class="form-control" placeholder="Area" name="Area" required="true">
                       </div>
                      
                     </div>
-                     <div class="col-md-8 pr-1">
-                      <div class="form-group">
-                        <label>Harga Buku</label>
-                        <input type="number" class="form-control"  placeholder="Harga Buku" name="Harga" required="true">
-                      </div>
                     </div>
-                    
-                    <div class="col-md-4 px-1">
-                      <div class="form-group">
-                        <label>Tebal Halaman</label>
-                        <input type="number" class="form-control" placeholder="Tebal Halaman" name="Halaman" required="true">
-                      </div>
-                     
-                    </div>
-                    
+                     <button type="submit" class="btn btn-primary" style="float: right;">Simpan</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
                   </div>
                 
                     
@@ -96,8 +85,7 @@ Coded by www.creative-tim.com
                 </div>
                 <!-- /.card-body -->
                 <div class="modal-footer justify-content-between">
-             <button type="submit" class="btn btn-primary" style="float: right;">Simpan</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+           
           
             </div>
               </form>
@@ -108,60 +96,48 @@ Coded by www.creative-tim.com
         <!-- /.modal-dialog -->
       </div> 
 
- {{#each list}}
+ {{#each kurir}}
       <div class="modal fade" id="modal-edit{{this._id}}" role="dialog">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Buku</h4>
+              <h4 class="modal-title">Edit Kurir</h4>
             </div>
             <div class="modal-body">
-              <form role="form" action="/admin_editbuku" method="post" >
-              <input type="text" class="form-control"  placeholder="Judul Buku" name="_id" required="true" value="{{this.id}}" hidden="true">
+               <form role="form" action="/admin/updateKurir/{{this._id}}" method="post" >
+             
                 <div class="card-body">
-                  
                    <div class="row">
                     <div class="col-md-12 pr-1">
                       <div class="form-group">
-                        <label>Judul</label>
-                        <input type="text" class="form-control"  placeholder="Judul Buku" name="Judul" required="true" value="{{this.Judul}}">
+                        <label>Nama</label>
+                        <input type="text" class="form-control" value="{{this.nama}}" placeholder="Nama" name="Nama" required="true">
                       </div>
                     </div>
                     <div class="col-md-12 pr-1">
                       <div class="form-group">
-                        <label>Pengarang</label>
-                        <input type="text" class="form-control"  placeholder="Pengarang" name="Pengarang" required="true" value="{{this.Pengarang}}" >
+                        <label>No HP</label>
+                        <input type="number" class="form-control" value="{{this.nohp}}" placeholder="No HP" name="Nohp" required="true">
                       </div>
                     </div>
+                  
                     <div class="col-md-8 pr-1">
                       <div class="form-group">
-                        <label>Penerbit</label>
-                        <input type="text" class="form-control"  value="{{this.Penerbit}}" placeholder="Penerbit" name="Penerbit" required="true">
+                        <label>Alamat</label>
+                        <input type="text" class="form-control"  placeholder="Alamat" value="{{this.alamat}}" name="Alamat" required="true">
                       </div>
                     </div>
                     
                     <div class="col-md-4 px-1">
                       <div class="form-group">
-                        <label>Tahun Terbit</label>
-                        <input type="number" class="form-control" value="{{this.Tahun}}" placeholder="Tahun Terbit" name="Tahun" required="true">
+                        <label>Area</label>
+                        <input type="text" class="form-control" placeholder="Area" name="Area" value="{{this.area}}" required="true">
                       </div>
                      
                     </div>
-                     <div class="col-md-8 pr-1">
-                      <div class="form-group">
-                        <label>Harga Buku</label>
-                        <input type="number" class="form-control" value="{{this.Harga}}"  placeholder="Harga Buku" name="Harga" required="true">
-                      </div>
                     </div>
-                    
-                    <div class="col-md-4 px-1">
-                      <div class="form-group">
-                        <label>Tebal Halaman</label>
-                        <input type="number" class="form-control" value="{{this.Halaman}}" placeholder="Tebal Halaman" name="Halaman" required="true">
-                      </div>
-                     
-                    </div>
-                    
+                     <button type="submit" class="btn btn-primary" style="float: right;">Simpan</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
                   </div>
                 
                     
@@ -169,12 +145,10 @@ Coded by www.creative-tim.com
                 </div>
                 <!-- /.card-body -->
                 <div class="modal-footer justify-content-between">
-             <button type="submit" class="btn btn-primary" style="float: right;">Simpan</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+           
           
             </div>
-              </form>
-            </div>
+              </form></div>
           </div>
           <!-- /.modal-content -->
         </div>
@@ -187,7 +161,7 @@ Coded by www.creative-tim.com
       <div class="logo">
         <a href="https://www.creative-tim.com" class="simple-text logo-mini">
           <div class="logo-image-small">
-            <img src="http://localhost:3000/Asset/Admin/img/logo-small.png">
+            <img src="../Asset/Admin/img/logo-small.png">
           </div>
           <!-- <p>CT</p> -->
         </a>
@@ -201,31 +175,35 @@ Coded by www.creative-tim.com
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li >
-            <a href="/admin_dashboard">
+            <a href="/admin/dashboard">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>  
           <li>
-            <a href="/admin_databuku">
+            <a href="/admin/produk">
               <i class="nc-icon nc-tile-56"></i>
-              <p>Data Buku</p>
-            </a>
-          </li>
-          <li  class="active ">
-            <a href="/admin_datatransaksi">
-              <i class="nc-icon nc-cart-simple"></i>
-              <p>Data Transaksi</p>
+              <p>Produk</p>
             </a>
           </li>
           <li>
-           <a href="/admin_datamember">
-              <i class="nc-icon nc-badge"></i>
-              <p>Data Member</p>
+            <a href="/admin/kurir">
+              <i class="nc-icon nc-delivery-fast"></i>
+              <p>Kurir</p>
             </a>
           </li>
-        
-       
+           <li>
+            <a href="/admin/distributor">
+              <i class="nc-icon nc-badge"></i>
+              <p>Distributor</p>
+            </a>
+          </li> 
+           <li class="active">
+            <a href="/admin/transaksi">
+              <i class="nc-icon nc-cart-simple"></i>
+              <p>Transaksi</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -241,7 +219,7 @@ Coded by www.creative-tim.com
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Dashboard </a>
+            <a class="navbar-brand" href="javascript:;">Transaksi </a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -288,30 +266,67 @@ Coded by www.creative-tim.com
           <div class="col-md-12">
             <div class="card">
             <div class="card-header">
+                <h4>Penjualan Dikemas</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table">
                <thead>
                         <tr>
-                          <th>Kode Transaksi</th>
-                          <th>Member</th>
-                          <th>Tanggal</th>
+                          <th>Agen</th>
+                          <th>Nama Produk</th>
+                          <th>Harga</th>
+                          <th>Jumlah</th>
                           <th>Total</th>
+                          <th>Status</th>
                           <th>Action</th>
                           </tr>
                       </thead>
                       <tbody>
-                       {{#each list}}
+                       {{#each penjualan}}
                           <tr>
-                          <td>{{this._id}}</td>
-                          <td>{{this.Id_user}}</td>
-                          <td>{{this.Tanggal}}</td>
-                          <td>{{this.Total}}</td>
-                                                  
-                          <td><a href="#" class="btn btn-primary" data-toggle="modal" data-target="">
-                          Detail</a></td>    
+                          <td>{{this.nama_agen}}</td>
+                          <td>{{this.nama}}</td>
+                          <td>{{this.harga_jual}}</td>
+                          <td>{{this.jumlah}}</td>
+                          <td>{{this.total}}</td>
+                          <td>{{this.status}}</td>
+                          <td>
+                          <a href="/admin/status/{{this._id}}"class="btn btn-danger" onclick="return(confirm('Kirim Barang>>?'));"><i> Kirim Barang </i>
+                        </a></td>    
                   
+                     </tr>
+                     {{/each}}
+                      </tbody>
+                         </table>
+                </div>
+              </div>
+            
+              <div class="card-header">
+                <h4>Penjualan DiKirim</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+               <thead>
+                        <tr>
+                          <th>Agen</th>
+                          <th>Nama Produk</th>
+                          <th>Harga</th>
+                          <th>Jumlah</th>
+                          <th>Total</th>
+                          <th>Status</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                       {{#each penjual}}
+                          <tr>
+                          <td>{{this.nama_agen}}</td>
+                          <td>{{this.nama}}</td>
+                          <td>{{this.harga_jual}}</td>
+                          <td>{{this.jumlah}}</td>
+                          <td>{{this.total}}</td>
+                          <td>{{this.status}}</td>    
                      </tr>
                      {{/each}}
                       </tbody>
@@ -339,19 +354,19 @@ Coded by www.creative-tim.com
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js
     "></script>
 
-  <script src="http://localhost:3000/Asset/Admin/js/core/jquery.min.js"></script>
-  <script src="http://localhost:3000/Asset/Admin/js/core/popper.min.js"></script>
-  <script src="http://localhost:3000/Asset/Admin/js/core/bootstrap.min.js"></script>
-  <script src="http://localhost:3000/Asset/Admin/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="../Asset/Admin/js/core/jquery.min.js"></script>
+  <script src="../Asset/Admin/js/core/popper.min.js"></script>
+  <script src="../Asset/Admin/js/core/bootstrap.min.js"></script>
+  <script src="../Asset/Admin/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
-  <script src="http://localhost:3000/Asset/Admin/js/plugins/chartjs.min.js"></script>
+  <script src="../Asset/Admin/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
-  <script src="http://localhost:3000/Asset/Admin/js/plugins/bootstrap-notify.js"></script>
+  <script src="../Asset/Admin/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="http://localhost:3000/Asset/Admin/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-  <script src="http://localhost:3000/Asset/Admin/demo/demo.js"></script>
+  <script src="../Asset/Admin/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+  <script src="../Asset/Admin/demo/demo.js"></script>
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/assets-for-demo/js/demo.js

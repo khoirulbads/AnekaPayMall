@@ -6,8 +6,11 @@ const exphbs = require('express-handlebars');
 const bodyparser = require('body-parser');
 var session = require('express-session')
 
+
+
 const auth_controller = require('./controllers/auth_controller');
 const admin_controller = require('./controllers/admin_controller');
+const agen_controller = require('./controllers/agen_controller');
 
 var app = express();
 
@@ -28,4 +31,5 @@ app.listen(3000, () => {
 
 
 app.use('/auth', auth_controller);
-app.use('/admin', admin_controller)
+app.use('/admin', admin_controller);
+app.use('/agen', agen_controller);

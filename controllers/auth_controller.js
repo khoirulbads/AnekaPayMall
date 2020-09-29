@@ -27,14 +27,14 @@ router.post('/actionlogin',async (req, res) => {
             sess.level = user.level;
 
             res.redirect('/admin/dashboard');
-        }else if(user.level=='member'){
+        }else if(user.level=='agen'){
             sess._id = user._id;
             sess.email = user.email;
             sess.nama = user.nama;
             sess.password = user.password;
             sess.level = user.level;
 
-            res.redirect('member_dashboard');
+            res.redirect('/agen/beranda');
         }
     }catch(e){
         res.render('Admin/login',{

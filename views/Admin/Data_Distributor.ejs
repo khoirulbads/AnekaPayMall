@@ -21,7 +21,7 @@ Coded by www.creative-tim.com
   <link rel="icon" type="image/png" href="../Asset/Admin/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Admin - Produk
+    Admin - Distributor
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -41,57 +41,40 @@ Coded by www.creative-tim.com
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Produk</h4>
+              <h4 class="modal-title">Tambah Distributor</h4>
             </div>
             <div class="modal-body">
-              <form role="form" action="/admin/addProduk" method="post" >
+              <form role="form" action="/admin/addDistributor" method="post" >
              
                 <div class="card-body">
                    <div class="row">
                     <div class="col-md-12 pr-1">
                       <div class="form-group">
-                        <label>Nama Produk</label>
+                        <label>Nama</label>
                         <input type="text" class="form-control"  placeholder="Nama" name="Nama" required="true">
                       </div>
                     </div>
                     <div class="col-md-12 pr-1">
                       <div class="form-group">
-                        <label>Deskripsi</label>
-                        <input type="text" class="form-control"  placeholder="Deskripsi" name="Deskripsi" required="true">
+                        <label>No HP</label>
+                        <input type="number" class="form-control"  placeholder="No HP" name="Nohp" required="true">
                       </div>
                     </div>
+                  
                     <div class="col-md-8 pr-1">
                       <div class="form-group">
-                        <label>Kategori</label>
-                      <select name="Kategori" id="Kategori">
-                       {{#each kategori}}
-                          <option value={{this.nama}}>{{this.nama}}</option>
-                          {{/each}}
-                          </select>
-                      </div>
-                    </div>
-                    <div class="col-md-8 pr-1">
-                      <div class="form-group">
-                        <label>Harga Beli</label>
-                        <input type="number" class="form-control"  placeholder="Harga Beli" name="HargaBeli" required="true">
+                        <label>Alamat</label>
+                        <input type="text" class="form-control"  placeholder="Alamat" name="Alamat" required="true">
                       </div>
                     </div>
                     
                     <div class="col-md-4 px-1">
                       <div class="form-group">
-                        <label>Stok</label>
-                        <input type="number" class="form-control" placeholder="Stok" name="Stok" required="true">
+                        <label>Pemilik</label>
+                        <input type="text" class="form-control" placeholder="Pemilik" name="Pemilik" required="true">
                       </div>
                      
                     </div>
-                     <div class="col-md-8 pr-1">
-                      <div class="form-group">
-                        <label>Harga Jual</label>
-                        <input type="number" class="form-control"  placeholder="Harga Jual" name="HargaJual" required="true">
-                      </div>
-                    </div>
-                    
-                 
                     </div>
                      <button type="submit" class="btn btn-primary" style="float: right;">Simpan</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -113,60 +96,45 @@ Coded by www.creative-tim.com
         <!-- /.modal-dialog -->
       </div> 
 
- {{#each produk}}
+ {{#each kurir}}
       <div class="modal fade" id="modal-edit{{this._id}}" role="dialog">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Produk</h4>
+              <h4 class="modal-title">Edit Distributor</h4>
             </div>
             <div class="modal-body">
-              <form role="form" action="/admin/updateProduk/{{this._id}}" method="post" >
+               <form role="form" action="/admin/updateDistributor/{{this._id}}" method="post" >
              
                 <div class="card-body">
                    <div class="row">
                     <div class="col-md-12 pr-1">
                       <div class="form-group">
-                        <label>Nama Produk</label>
-                        <input type="text" class="form-control"  value="{{this.nama}}" placeholder="Nama" name="Nama" required="true">
+                        <label>Nama</label>
+                        <input type="text" class="form-control" value="{{this.nama}}" placeholder="Nama" name="Nama" required="true">
                       </div>
                     </div>
                     <div class="col-md-12 pr-1">
                       <div class="form-group">
-                        <label>Deskripsi</label>
-                        <input type="text" class="form-control" value="{{this.deskripsi}}"  placeholder="Deskripsi" name="Deskripsi" required="true">
+                        <label>No HP</label>
+                        <input type="number" class="form-control" value="{{this.nohp}}" placeholder="No HP" name="Nohp" required="true">
                       </div>
                     </div>
+                  
                     <div class="col-md-8 pr-1">
                       <div class="form-group">
-                        <label>Kategori</label>
-                      <select name="Kategori" id="Kategori">
-                              <option value={{this.kategori}}>{{this.kategori}}</option>
-                          </select>
-                      </div>
-                    </div>
-                    <div class="col-md-8 pr-1">
-                      <div class="form-group">
-                        <label>Harga Beli</label>
-                        <input type="number" class="form-control" value="{{this.harga_beli}}"  placeholder="Harga Beli" name="HargaBeli" required="true">
+                        <label>Alamat</label>
+                        <input type="text" class="form-control"  placeholder="Alamat" value="{{this.alamat}}" name="Alamat" required="true">
                       </div>
                     </div>
                     
                     <div class="col-md-4 px-1">
                       <div class="form-group">
-                        <label>Stok</label>
-                        <input type="number" class="form-control" value="{{this.stok}}" placeholder="Stok" name="Stok" required="true">
+                        <label>Pemilik</label>
+                        <input type="text" class="form-control" placeholder="Pemilik" name="Pemilik" value="{{this.pemilik}}" required="true">
                       </div>
                      
                     </div>
-                     <div class="col-md-8 pr-1">
-                      <div class="form-group">
-                        <label>Harga Jual</label>
-                        <input type="number" class="form-control"  value="{{this.harga_jual}}" placeholder="Harga Jual" name="HargaJual" required="true">
-                      </div>
-                    </div>
-                    
-                 
                     </div>
                      <button type="submit" class="btn btn-primary" style="float: right;">Simpan</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -180,8 +148,7 @@ Coded by www.creative-tim.com
            
           
             </div>
-              </form>
-            </div>
+              </form></div>
           </div>
           <!-- /.modal-content -->
         </div>
@@ -213,20 +180,19 @@ Coded by www.creative-tim.com
               <p>Dashboard</p>
             </a>
           </li>  
-          <li class="active ">
+          <li>
             <a href="/admin/produk">
               <i class="nc-icon nc-tile-56"></i>
               <p>Produk</p>
             </a>
           </li>
-
           <li>
             <a href="/admin/kurir">
               <i class="nc-icon nc-delivery-fast"></i>
               <p>Kurir</p>
             </a>
           </li>
-           <li>
+           <li class="active ">
             <a href="/admin/distributor">
               <i class="nc-icon nc-badge"></i>
               <p>Distributor</p>
@@ -300,36 +266,30 @@ Coded by www.creative-tim.com
           <div class="col-md-12">
             <div class="card">
             <div class="card-header">
-                <h4 data-toggle="modal" data-target="#modal-tambah" class="btn btn-primary">Tambah Produk </h4>
+                <h4 data-toggle="modal" data-target="#modal-tambah" class="btn btn-primary">Tambah Distributor </h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table">
                <thead>
                         <tr>
-                          <th>Nama Produk</th>
-                          <th>Kategori</th>
-                          <th>Sub Kat</th>
-                          <th>Harga Beli</th>
-                          <th>Harga Jual</th>
-                          <th>Stok</th>
-                          <th>Laba</th>
+                          <th>Nama </th>
+                          <th>No Hp</th>
+                          <th>Alamat</th>
+                          <th>Pemilik</th>
                           <th>Action</th>
                           </tr>
                       </thead>
                       <tbody>
-                       {{#each produk}}
+                       {{#each distributor}}
                           <tr>
                           <td>{{this.nama}}</td>
-                          <td>{{this.kategori}}</td>
-                          <td>{{this.subkategori}}</td>
-                          <td>{{this.harga_beli}}</td>
-                          <td>{{this.harga_jual}}</td>
-                          <td>{{this.stok}}</td>
-                          <td>{{this.laba}}</td>
+                          <td>{{this.no_hp}}</td>
+                          <td>{{this.alamat}}</td>
+                          <td>{{this.pemilik}}</td>
                           <td><a href="#" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit{{this._id}}">
                           <i class="nc-icon nc-ruler-pencil"></i></a>
-                          <a href="/admin/delProduk/{{this._id}}"class="btn btn-danger btn-xs" onclick="return(confirm('Apakah Data ini Akan dihapus?'));"><i class="nc-icon nc-simple-remove"></i>
+                          <a href="/admin/delDistributor/{{this._id}}"class="btn btn-danger btn-xs" onclick="return(confirm('Apakah Data ini Akan dihapus?'));"><i class="nc-icon nc-simple-remove"></i>
                         </a> </td>    
                   
                      </tr>

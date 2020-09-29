@@ -7,6 +7,10 @@ var penjualanSchema = new mongoose.Schema({
     agen: {
         type: String
     },
+
+    nama_agen: {
+        type: String
+    },
     nama: {
         type: String
     },
@@ -28,11 +32,17 @@ var penjualanSchema = new mongoose.Schema({
     kategori: {
         type: String
     },
+    sub_kategori:{
+        type: String
+    },
     tanggal: {
         type: Date
     },
     inv: {
         type: String
+    },
+    total:{
+        type:Number
     },
     tipePengiriman:{
         type:String

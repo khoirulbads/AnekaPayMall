@@ -8,7 +8,7 @@ var distriSchema = new mongoose.Schema({
         type: String
     },
     no_hp: {
-        type: Number
+        type: String
     },
     pemilik: {
         type: String

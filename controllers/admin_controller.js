@@ -5,13 +5,16 @@ const Produk = mongoose.model('produk');
 const User = mongoose.model('user');
 const Kategori = mongoose.model('kategori');
 const Kurir = mongoose.model('kurir');
+const Distributor = mongoose.model('distributor');
+const Penjualan = mongoose.model('penjualan');
 
 var sess 
 
+//dashboard
 router.get('/dashboard',async (req, res) => {
     sess = req.session;
     if (sess.level=="admin") {
-    let us  = await User.countDocuments({level:'member'})
+    let us  = await User.countDocuments({level:'agen'})
     let pr  = await Produk.countDocuments({active:1})
         res.render("Admin/Dashboard", {
                     message : sess.nama, y:us, z:pr, date:Date.now()
@@ -21,6 +24,8 @@ router.get('/dashboard',async (req, res) => {
     }
 });
 
+
+//tampil produk
 router.get('/produk',async (req, res) => {
     sess = req.session;
     if (sess.level=="admin") {
@@ -39,6 +44,7 @@ router.get('/produk',async (req, res) => {
     }
 });
 
+//tambah produk
 router.post('/addProduk', async (req, res) => {
     sess = req.session;
     let add = new Produk();
@@ -56,11 +62,13 @@ router.post('/addProduk', async (req, res) => {
     res.redirect('/admin/produk');
 })
 
+//hapus produk
 router.get('/delProduk/:id', async (req,res)=>{
     await Produk.findOneAndUpdate({_id:`${req.params.id}`},{active:0,deleteOn:Date.now()},{new:true})
     res.redirect('/admin/produk');
 })
 
+//ubah produk
 router.post('/updateProduk/:id', async (req,res)=>{
     await Produk.findOneAndUpdate({_id:`${req.params.id}`},{
         nama:req.body.Nama,
@@ -74,6 +82,9 @@ router.post('/updateProduk/:id', async (req,res)=>{
     res.redirect('/admin/produk')
 })
 
+
+
+//tampil kurir
 router.get('/kurir',async (req, res) => {
     sess = req.session;
     if (sess.level=="admin") {
@@ -91,6 +102,7 @@ router.get('/kurir',async (req, res) => {
     }
 });
 
+//tambah kurir
 router.post('/addKurir', async (req, res) => {
     sess = req.session;
     let add = new Kurir();
@@ -103,11 +115,13 @@ router.post('/addKurir', async (req, res) => {
     res.redirect('/admin/kurir');
 })
 
+//hapus kurir
 router.get('/delKurir/:id', async (req,res)=>{
     await Kurir.findOneAndRemove({_id:`${req.params.id}`})
     res.redirect('/admin/kurir');
 })
 
+//ubah kurir
 router.post('/updateKurir/:id', async (req,res)=>{
     await Kurir.findOneAndUpdate({_id:`${req.params.id}`},{
         nama : req.body.Nama,
@@ -115,6 +129,80 @@ router.post('/updateKurir/:id', async (req,res)=>{
         alamat : req.body.Alamat,
         area : req.body.Area,},{new:true})
     res.redirect('/admin/kurir')
+})
+
+
+//tampil distributor
+router.get('/distributor',async (req, res) => {
+    sess = req.session;
+    if (sess.level=="admin") {
+        try{
+            let dis  = await Distributor.find({})
+       
+            res.render("Admin/Data_Distributor", {
+                        message : sess.nama, distributor:dis
+                        });
+        }catch(e){
+            res.render('error')
+        }
+        }else{
+        res.redirect('/auth/logout');
+    }
+});
+
+//tambah distributor
+router.post('/addDistributor', async (req, res) => {
+    sess = req.session;
+    let add = new Distributor();
+    add.nama = req.body.Nama;
+    add.alamat = req.body.Alamat;
+    add.no_hp = req.body.Nohp;
+    add.pemilik = req.body.Pemilik;
+
+    await add.save()
+    res.redirect('/admin/distributor');
+})
+
+//hapus distributor
+router.get('/delDistributor/:id', async (req,res)=>{
+    await Distributor.findOneAndRemove({_id:`${req.params.id}`})
+    res.redirect('/admin/distributor');
+})
+
+//ubah distributor
+router.post('/updateDistributor/:id', async (req,res)=>{
+    await Distributor.findOneAndUpdate({_id:`${req.params.id}`},{
+        nama : req.body.Nama,
+        nohp : req.body.Alamat,
+        alamat : req.body.Nohp,
+        area : req.body.Pemilik,},{new:true})
+    res.redirect('/admin/distributor')
+})
+
+
+
+//tampil penjualan
+router.get('/transaksi',async (req, res) => {
+    sess = req.session;
+    if (sess.level=="admin") {
+        try{
+            let pen  = await Penjualan.find({status:"dikemas"})
+            let jul = await Penjualan.find({status:"diterima kurir"})
+            res.render("Admin/Data_Transaksi", {
+                        message : sess.nama, penjualan:pen, penjual:jul
+                        });
+        }catch(e){
+            res.render('error')
+        }
+        }else{
+        res.redirect('/auth/logout');
+    }
+});
+
+//ubah status penjualan
+router.get('/status/:id', async (req,res)=>{
+    await Penjualan.findOneAndUpdate({_id:`${req.params.id}`},{status:"diterima kurir"},{new:true})
+    res.redirect('/admin/transaksi');
 })
 
 module.exports = router;

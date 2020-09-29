@@ -3,35 +3,35 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Member - Keranjang</title>
+    <title>Agen - Keranjang</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="http://localhost:3000/Member/tmart/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../Agen/tmart/images/favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     
 
     <!-- All css files are included here. -->
     <!-- Bootstrap fremwork main css -->
-    <link rel="stylesheet" href="http://localhost:3000/Member/tmart/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Agen/tmart/css/bootstrap.min.css">
     <!-- Owl Carousel main css -->
-    <link rel="stylesheet" href="http://localhost:3000/Member/tmart/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="http://localhost:3000/Member/tmart/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../Agen/tmart/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../Agen/tmart/css/owl.theme.default.min.css">
     <!-- This core.css file contents all plugings css file. -->
-    <link rel="stylesheet" href="http://localhost:3000/Member/tmart/css/core.css">
+    <link rel="stylesheet" href="../Agen/tmart/css/core.css">
     <!-- Theme shortcodes/elements style -->
-    <link rel="stylesheet" href="http://localhost:3000/Member/tmart/css/shortcode/shortcodes.css">
+    <link rel="stylesheet" href="../Agen/tmart/css/shortcode/shortcodes.css">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="http://localhost:3000/Member/tmart/style.css">
+    <link rel="stylesheet" href="../Agen/tmart/style.css">
     <!-- Responsive css -->
-    <link rel="stylesheet" href="http://localhost:3000/Member/tmart/css/responsive.css">
+    <link rel="stylesheet" href="../Agen/tmart/css/responsive.css">
     <!-- User style -->
-    <link rel="stylesheet" href="http://localhost:3000/Member/tmart/css/custom.css">
+    <link rel="stylesheet" href="../Agen/tmart/css/custom.css">
 
 
     <!-- Modernizr JS -->
-    <script src="http://localhost:3000/Member/tmart/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="../Agen/tmart/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
@@ -91,21 +91,22 @@
                         <div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
                             <div class="logo">
                                 <a href="index.html">
-                                    <h2>Toko Haji Khoirul</h2>
+                                    <h2>Aneka Mall</h2>
                                 </a>
                             </div>
                         </div>
                         <!-- Start MAinmenu Ares -->
                         <div class="col-md-8 col-lg-8 col-sm-6 col-xs-6">
-                            <nav class="mainmenu__nav hidden-xs hidden-sm">
+                             <nav class="mainmenu__nav hidden-xs hidden-sm">
                                 <ul class="main__menu">
-                                 <li class="drop"><a href="/member_home">BERANDA</a></li>
+                                    <li><a  style="color: red;" href="/agen/beranda">BERANDA</a></li>
                                     
-                                    <li class="drop"><a href="/member_belanja">PRODUK</a>
+                                    <li class="drop"><a href="/agen/produk">PRODUK</a>
                                     </li>
-
+                                 <!--   <li class="drop"><a href="/member_keranjang">KERANJANG</a>
+                                    </li> -->
                                     <li class="drop"><a href="">VOUCHER & PROMO</a>
-                                    </li>  <li class="drop"><a href="/member_riwayatbelanja">RIWAYAT BELANJA</a>
+                                    </li> <li class="drop"><a href="/member_riwayatbelanja">RIWAYAT BELANJA</a>
                                     </li>
                                     <li><a href="">KONTAK</a></li>
                                 </ul>
@@ -150,7 +151,7 @@
                             <ul class="menu-extra">
                                 <li class="search search__open hidden-xs"><span class="ti-search"></span></li>
                                 <li><a href="/member_profil"><span class="ti-user"></span></a></li>
-                                <li><a href="/member_keranjang"><span  style="color: red;"  class="ti-shopping-cart"></span></a></li>
+                                <li><a href="/agen/keranjang"><span  style="color: red;"  class="ti-shopping-cart"></span></a></li>
                                 <li><a href="/admin_logout"><span class="ti-power-off"></span></a></li>
                                
                                </ul>
@@ -296,7 +297,7 @@
         </div>
         <!-- End Offset Wrapper -->
         <!-- Start Bradcaump area -->
-        <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(http://localhost:3000/Member/tmart/images/bg/2.jpg) no-repeat scroll center center / cover ;">
+        <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(../Agen/tmart/images/bg/2.jpg) no-repeat scroll center center / cover ;">
             <div class="ht__bradcaump__wrap">
                 <div class="container">
                     <div class="row">
@@ -326,21 +327,21 @@
                                     <thead>
                                         <tr>
                                             <th class="product-thumbnail">#</th>
-                                            <th class="product-name">Judul Buku</th>
+                                            <th class="product-name">Nama Produk</th>
                                             <th class="product-price">Harga</th>
                                             <th class="product-quantity">Jumlah</th>
-                                            <th class="product-subtotal">Subtotal</th>
+                                            <th class="product-subtotal">Total</th>
                                             <th class="product-remove">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{#each list}}
+                                        {{#each keranjang}}
                                         <tr>
-                                            <td class="product-thumbnail"><a href="#"><img src="http://localhost:3000/Member/tmart/images/product/kisah.jpg" alt="product img" /></a></td>
-                                            <td class="product-name"><a href="#">{{this.Judul}}</a></td>
-                                            <td class="product-price"><span class="amount">Rp. {{this.Harga}}</span></td>
-                                            <td class="product-quantity">{{this.Jumlah}}</td>
-                                            <td class="product-subtotal">Rp. {{this.Subtotal}}</td>
+                                            <td class="product-thumbnail"><a href="#"><img src="../Agen/tmart/images/product/kisah.jpg" alt="product img" /></a></td>
+                                            <td class="product-name"><a href="#">{{this.nama}}</a></td>
+                                            <td class="product-price"><span class="amount">Rp. {{this.harga_jual}}</span></td>
+                                            <td class="product-quantity">{{this.jumlah}}</td>
+                                            <td class="product-subtotal">Rp. {{this.sub_total}}</td>
                                             <td><a href="#" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit{{this._id}}">
                           Edit</a>
                           <a href="/member_hapuskeranjang/{{this.Judul}}"class="btn btn-danger" onclick="return(confirm('Apakah Data ini {{this.Judul}} Akan dihapus ?'));">Hapus
@@ -379,7 +380,7 @@
                                         </table>
                                         
                                         <div class="wc-proceed-to-checkout">
-                                            <a href="/member_checkout">Checkout</a>
+                                            <a href="/agen/checkout">Checkout</a>
                                         </div>
                                     </div>
                                 </div>
@@ -523,17 +524,17 @@
     <!-- Placed js at the end of the document so the pages load faster -->
 
     <!-- jquery latest version -->
-    <script src="http://localhost:3000/Member/tmart/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="../Agen/tmart/js/vendor/jquery-1.12.0.min.js"></script>
     <!-- Bootstrap framework js -->
-    <script src="http://localhost:3000/Member/tmart/js/bootstrap.min.js"></script>
+    <script src="../Agen/tmart/js/bootstrap.min.js"></script>
     <!-- All js plugins included in this file. -->
-    <script src="http://localhost:3000/Member/tmart/js/plugins.js"></script>
-    <script src="http://localhost:3000/Member/tmart/js/slick.min.js"></script>
-    <script src="http://localhost:3000/Member/tmart/js/owl.carousel.min.js"></script>
+    <script src="../Agen/tmart/js/plugins.js"></script>
+    <script src="../Agen/tmart/js/slick.min.js"></script>
+    <script src="../Agen/tmart/js/owl.carousel.min.js"></script>
     <!-- Waypoints.min.js. -->
-    <script src="http://localhost:3000/Member/tmart/js/waypoints.min.js"></script>
+    <script src="../Agen/tmart/js/waypoints.min.js"></script>
     <!-- Main js file that contents all jQuery plugins activation. -->
-    <script src="http://localhost:3000/Member/tmart/js/main.js"></script>
+    <script src="../Agen/tmart/js/main.js"></script>
 
 </body>
 
